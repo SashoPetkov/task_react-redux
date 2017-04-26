@@ -1,0 +1,312 @@
+  // mixins
+.flexed(@justify:space-between, @align:center,  @direction:row) {
+  display: flex;
+  justify-content: @justify;
+  align-items: @align;
+  flex-direction: @direction;
+}
+
+@Borders-light: #efefed;
+@ColorDark: #7f7f7f;
+@ColorMiddle: #b4b4b4;
+@BlueColor:#28b7d7;
+@Btn-red:#ea445b;
+@Btn-dark:#363636;
+
+  // styles
+
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  color: @ColorMiddle;
+}
+
+#wrapper {
+  padding: 30px 0;
+  background-color: #232324;
+  .flexed(center);
+  font-size: 16px;
+  .pop-up {
+    width: 500px;
+    position: relative;
+    background-color: white;
+  }
+}
+
+  // initial input
+
+.initial {
+  width: 500px;
+  height: 200px;
+
+  .initial-input {
+    height: 20%;
+  }
+
+  .initial-input::-webkit-input-placeholder {
+    font-size: 1.2rem;
+  }
+}
+
+  // video-container
+
+.video {
+  height: 350px;
+  padding: 20px;
+  .flexed(center, center, column);
+  section, form {
+    width: 100%;
+  }
+  &-player {
+    height: 80%;
+    border-radius: 3px !important;
+    * {
+      border-radius: 3px;
+    }
+  }
+  &-editor {
+    height: 10%;
+    .flexed();
+    font-size: 0.5rem;
+    margin-bottom: 2%;
+    aside {
+      height: 100%;
+      .flexed();
+      div {
+        cursor: pointer;
+      }
+      div:hover span{
+        color: black;
+      }
+    }
+    img {
+      height: 0.6rem;
+      width: 0.6rem;
+      vertical-align: middle;
+      margin-right: 3px;
+    }
+    span {
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    button {
+      font-size: 0.5rem;
+      border-radius: 2px;
+      border: none;
+      background-color: @Btn-dark;
+      color: white;
+      padding: 5px 10px;
+      vertical-align: middle;
+      transition: all 0.3s linear;
+    }
+    button:hover {
+      background-color: @Btn-dark + 90%;
+      color: @Btn-dark;
+      cursor: pointer;
+    }
+    .btn-delete {
+      margin-left: 5px;
+      background-color: @Btn-red;
+    }
+    .btn-delete:hover {
+      background-color: @Btn-red + 90%;
+      color: @Btn-red;
+    }
+  }
+  &-comment {
+    height: 10%;
+  }
+
+}
+.initial-input {
+  width: 100%;
+  height: 100%;
+  padding-left: 10px;
+  border: 1px solid @Borders-light;
+  border-radius: 3px;
+  font-style: italic;
+  color: @ColorDark;
+}
+input::-webkit-input-placeholder {
+  color: @ColorMiddle;
+}
+
+  // comment-list
+.all-comments {
+  margin-right: 20px;
+  padding-top: 30px;
+  font-family: sans-serif;
+  border-top: 1px solid @Borders-light;
+}
+
+.comment {
+  font-size: 0.5rem;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  .user {
+    height: 40px;
+    position: relative;
+    margin-bottom: 20px;
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      margin-right: 20px;
+    }
+    > div {
+      display: inline-block;
+      vertical-align: top;
+      position: relative;
+      transform: translateY(-50%);
+      top: 50%;
+
+      h2 {
+        color: @BlueColor;
+        font-size: 1rem;
+      }
+      p {
+        font-size: 0.5rem;
+        height: 0.5rem;
+        line-height: 0.5rem;
+        color: @ColorMiddle;
+      }
+    }
+  }
+  > div > p, .comment-like-bar {
+    padding-left: 15px;
+    border-left: 3px solid @Borders-light;
+    text-align: justify;
+  }
+  p {
+    line-height: 1rem;
+    color: @ColorDark;
+    font-size: 0.8rem;
+  }
+  .comment-like-bar {
+    .flexed();
+    padding: 10px 0;
+    padding-left: 15px;
+    border-bottom: 1px solid @Borders-light;
+
+    aside {
+      cursor: pointer;
+      div:hover span {
+        color: black;
+      }
+      span:hover {
+        color: black;
+      }
+    }
+    aside {
+      height: 100%;
+      .flexed();
+      img {
+        height: 0.6rem;
+        width: 0.6rem;
+        vertical-align: middle;
+        margin-right: 3px;
+      }
+      span {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+        margin-top: 2px;
+      }
+    }
+  }
+}
+
+  // Replay list
+
+.replay {
+  border-left: 3px solid @ColorMiddle;
+  padding-left: 15px;
+  height: 60px;
+
+  section {
+    .flexed(flex-start);
+    p {
+      margin-right: 10px;
+      font-size: 0.5rem;
+      color: @ColorMiddle;
+      padding: 5px 0;
+    }
+    p:first-of-type {
+      color: @ColorDark;
+      font-weight: bold;
+      position: relative;
+    }
+    p:first-of-type::after {
+      content: '\25B2';
+      color: @Borders-light;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -6px;
+    }
+  }
+
+  input {
+    width: 100%;
+    height: 27px;
+    padding-left: 10px;
+    border: 1px solid @Borders-light;
+    border-radius: 3px;
+    font-style: italic;
+    color: @ColorDark;
+    outline: none;
+  }
+  input::-webkit-input-placeholder {
+    color: @ColorMiddle;
+  }
+}
+.replayList {
+
+  li {
+    min-height: 20px;
+    padding: 5px 0 5px 15px;
+    margin: 0 0 2px 15px;
+    border-left: 3px solid @ColorMiddle;
+
+    h4 {
+      font-size: 0.8rem;
+      height: 100%;
+      line-height: 0.8rem;
+      font-weight: lighter;
+    }
+    span {
+      font-size: 0.4rem;
+      color: @ColorMiddle;
+      font-weight: lighter;
+      display: inline-block;
+      margin-top: 5px;
+    }
+  }
+}
+
+
+  // CLOSE button
+
+.close {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  transform: rotate(45deg);
+  text-align: center;
+  border-radius: 100%;
+  border: 1px solid lightgrey;
+  padding-left: 1px;
+  background-color: white;
+  color: red;
+  font-weight: bold;
+  transition: all 0.3s ease-in;
+}
+.close:hover {
+  color: @BlueColor;
+  transform: rotate(225deg);
+  cursor: pointer;
+}
